@@ -11,7 +11,8 @@ RUN echo 'deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib n
 	deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free\n\
 	deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free\n'\
 	 > /etc/apt/sources.list \
-&& apt-get update
+&&apt-get clean && apt-get update \
+&& apt-get install -y zip wget
 
 RUN cp "/usr/share/zoneinfo/$TZ" /etc/localtime \
     && echo "$TZ" > /etc/timezone
